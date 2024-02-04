@@ -3,7 +3,9 @@ import 'dart:js';
 import 'package:flutter/material.dart';
 import 'package:pipizerria/models/menu.dart';
 import 'package:pipizerria/ui/pizza_list.dart';
+import 'package:pipizerria/ui/share/appbar_widget.dart';
 
+import 'models/cart.dart';
 import 'models/pizza.dart';
 
 void main() {
@@ -43,8 +45,11 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatelessWidget {
   String title;
+  Cart _cart;
 
-  MyHomePage({required this.title, Key? key}) : super(key: key);
+  MyHomePage({required this.title, Key? key}) :
+        _cart = Cart(),
+        super(key: key);
 
   var _menus = [
     Menu(1, 'Entrées', 'entree.png', Colors.lightGreen),
@@ -54,29 +59,27 @@ class MyHomePage extends StatelessWidget {
   ];
 
   var _pizzas = [
-    Pizza(1, "Margherita", "Tomato, mozzarella, basil", "margherita.jpg", 8.99),
-    Pizza(2, "Pepperoni", "Pepperoni, mozzarella, tomato sauce", "pepperoni.jpg", 10.99),
-    Pizza(3, "Vegetarian", "Mixed vegetables, mozzarella, tomato sauce", "vegetarian.jpg", 9.99),
-    Pizza(4, "Hawaiian", "Ham, pineapple, mozzarella, tomato sauce", "hawaiian.jpg", 11.99),
+    Pizza(1, "Margherita", "Tomato, mozzarella, basil", "pizza-bbq.jpg", 8.99),
+    Pizza(2, "Pepperoni", "Pepperoni, mozzarella, tomato sauce", "pizza-merguez.png", 10.99),
+    Pizza(3, "Vegetarian", "Mixed vegetables, mozzarella, tomato sauce", "pizza-vegetable.jpg", 9.99),
+    Pizza(4, "Hawaiian", "Ham, pineapple, mozzarella, tomato sauce", "pizza-hawai.jpg", 11.99),
   ];
 
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Nos Pizzas'),
-        ),
+        appBar: AppBarWidget(title),
         body: ListView.builder(
             padding: const EdgeInsets.all(8.0),
             itemCount: _pizzas.length,
             itemBuilder: (context, index) {
-              return _buildRow(_pizzas[index]);
+              return _buildRow(context, _pizzas[index]);
             }));
   }
 }
 
-_buildRow(Pizza pizza) {
+_buildRow(BuildContext context, Pizza pizza) {
   return Card(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(

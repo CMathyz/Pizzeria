@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:pipizerria/ui/share/appbar_widget.dart';
 import 'package:pipizerria/ui/share/buy_button_widget.dart';
 import 'package:pipizerria/ui/share/pizzeria_style.dart';
 import 'package:pipizerria/ui/share/total_widget.dart';
@@ -20,9 +21,7 @@ class _PizzaDetailsState extends State<PizzaDetails> {
   @override
   Widget build (BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget._pizza.title),
-      ),
+      appBar: AppBarWidget(widget._pizza.title),
       body: ListView(
         padding: EdgeInsets.all(4.0),
         children: [
@@ -54,7 +53,7 @@ class _PizzaDetailsState extends State<PizzaDetails> {
             style: PizzeriaStyle.headerTextStyle,
           ),
           _buildDropDownSauces(),
-          TotalWidget(widget._pizza.price)
+          TotalWidget(widget._pizza.price),
           BuyButtonWidget(),
         ],
       ),

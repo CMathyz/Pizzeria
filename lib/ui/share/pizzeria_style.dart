@@ -5,7 +5,7 @@ class PizzeriaStyle {
   static final TextStyle priceTotalTextStyle = baseTextStyle.copyWith(
     color: Colors.indigo,
     fontSize: 22.0,
-  )
+  );
   static final baseTextStyle = const TextStyle(fontWeight: FontWeight.bold);
   static final TextStyle pageTitleTextStyle = baseTextStyle.copyWith(
     fontSize: 26.0,
@@ -27,9 +27,5 @@ class PizzeriaStyle {
   color: Colors.blueGrey,
   fontSize: 20.0,
   fontWeight: FontWeight.bold,
-  );
-  static final TextStyle priceTotalTextStyle = baseTextStyle.copyWith(
-  color: Colors.indigo,
-  fontSize: 22.0,
   );
 }

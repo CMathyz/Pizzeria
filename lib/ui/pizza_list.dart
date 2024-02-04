@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pipizerria/ui/pizza_details.dart';
+import 'package:pipizerria/ui/share/appbar_widget.dart';
 import 'package:pipizerria/ui/share/buy_button_widget.dart';
 
 import '../models/pizza.dart';
@@ -24,9 +25,7 @@ class _PizzaListState extends State<PizzaList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Nos Pizzas'),
-      ),
+      appBar: AppBarWidget('Nos Pizzas'),
       body: ListView.builder(
         padding: const EdgeInsets.all(8.0),
         itemCount: _pizzas.length,
@@ -69,8 +68,8 @@ class _PizzaListState extends State<PizzaList> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         ListTile(
-          title: (pizza.title),
-          subtitle: (pizza.garniture),
+          title: Text(pizza.title),
+          subtitle: Text(pizza.garniture),
           leading: Icon(Icons.local_pizza),
         ),
         Image.asset(
